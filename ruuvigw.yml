@@ -135,7 +135,7 @@
       when: port_forward.changed
 
     - name: Replace DB name for template
-      shell: "sed -i 's/DS_RUUVI/ruuvi/g' '{{ item }}'"  
+      shell: "sed -i 's/DS_RUUVI/Ruuvi/g' '{{ item }}'"  
       ignore_errors: yes
       with_fileglob:
         - "/etc/RuuviDashboards/*.json"
