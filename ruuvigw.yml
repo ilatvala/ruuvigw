@@ -125,7 +125,7 @@
         dest: /etc/RuuviDashboards
 
     - name: Direct 3000 port to 80
-      iptables: table=nat chain=PREROUTING protocol=tcp match=tcp destination_port=3000 jump=REDIRECT to_ports=80
+      iptables: table=nat chain=PREROUTING protocol=tcp match=tcp destination_port=80 jump=REDIRECT to_ports=3000
       register: port_forward
 
     - name: Save iptables
