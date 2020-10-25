@@ -12,7 +12,8 @@ apt install ansible git -y
 git clone https://github.com/ilatvala/ruuvigw.git
 cd ruuvigw/
 ```
-Modify the MAC addresses of your ruuvi tags to the ruuvinames var part in the beginning of the playbook (if you know what they are)
+Modify the MAC addresses of your ruuvi tags to the ruuvinames var part in the beginning of the ruuvigw.yml playbook (if you know what they are)  
+You can also modify those later in /etc/RuuviCollector/target/ruuvi-names.properties
 
 Run playbook with:
 ```
