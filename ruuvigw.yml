@@ -7,6 +7,7 @@
   vars:
     influxdb_version: influxdb_1.8.3_armhf.deb
     grafana_version: grafana_7.2.2_armhf.deb
+    database_name: ruuvi
     ruuvinames: |
       A67C075F95C6=Bedroom
       FC20740F6709=Auto
@@ -37,7 +38,8 @@
           - python-pip
           - python-setuptools
           - nftables
-          - iptables-persistent  
+          - iptables-persistent
+          - sed
         state: present
         update_cache: yes
         cache_valid_time: 3600
@@ -67,7 +69,7 @@
     - name: Create ruuvi database
       influxdb_database:
           hostname: "127.0.0.1"
-          database_name: "ruuvi"
+          database_name: "{{ database_name }}"
           port: 8086
           state: present
 
@@ -81,7 +83,7 @@
         ds_type: influxdb
         url: http://localhost:8086
         grafana_url: http://localhost:3000
-        database: ruuvi
+        database: "{{ database_name }}"
         is_default: yes
 
     - name: Install RuuviCollector
@@ -131,6 +133,12 @@
     - name: Save iptables
       command: iptables-save
       when: port_forward.changed
+
+    - name: Replace DB name for template
+      shell: "sed -i 's/DS_RUUVI/ruuvi/g' {{ item }}"  
+      ignore_errors: yes
+      with_fileglob:
+        - "/etc/RuuviDashboards/*.json"
 
     - name: Import ruuvi dashboards to Grafana
       ignore_errors: yes
