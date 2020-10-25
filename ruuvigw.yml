@@ -59,6 +59,11 @@
           - requests
           - influxdb==5.2.3 #5.3.0 was broken
 
+    - name: Check that Influxdb is running
+      wait_for:
+          port: 8086
+          delay: 10
+
     - name: Create ruuvi database
       influxdb_database:
           hostname: "127.0.0.1"
