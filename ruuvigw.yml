@@ -61,11 +61,6 @@
           - requests
           - influxdb==5.2.3 #5.3.0 was broken
 
-    - name: Check that Grafana API is fully running
-      wait_for:
-          port: 3000
-          delay: 120
-
     - name: Create ruuvi database
       influxdb_database:
           hostname: "127.0.0.1"
@@ -77,6 +72,11 @@
       # systemd module not working correctly with armbian ansible
       shell: "systemctl enable grafana-server.service --now"
 
+    - name: Check that Grafana API is fully running
+      wait_for:
+          port: 3000
+          delay: 30
+          
     - name: Create ruuvi datasource
       grafana_datasource:
         name: Ruuvi
