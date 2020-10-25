@@ -76,7 +76,7 @@ changed: [127.0.0.1]
 TASK [Enable and Start RuuviCollector service] ************************************
 changed: [127.0.0.1]
 
-TASK [Install RuuviCollector] *****************************************************
+TASK [Fetch Ruuvi dashboards] *****************************************************
 changed: [127.0.0.1]
 
 TASK [Direct 3000 port to 80] *****************************************************
