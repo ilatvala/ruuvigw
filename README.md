@@ -19,5 +19,6 @@ Run playbook with:
 ```
 ansible-playbook -i "127.0.0.1," ruuvigw.yml
 ```
-Reboot to start using.
+If you get any errors, then just run the playbook again.  
+Reboot to start using.  
 Grafana should be available in port 80 with some default Ruuvi dashboards.
