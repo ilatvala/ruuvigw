@@ -19,7 +19,7 @@
       Type=simple
       User=root
       WorkingDirectory=/etc/RuuviCollector
-      ExecStart=/usr/bin/java -jar /etc/RuuviCollector/ruuvi-collector-0.2.jar
+      ExecStart=/usr/bin/java -jar /etc/RuuviCollector/target/ruuvi-collector-0.2.jar
       Restart=always
       [Install]
       WantedBy=multi-user.target
@@ -37,7 +37,7 @@
           - python-pip
           - python-setuptools
           - nftables
-          - iptables-persistent
+          - iptables-persistent  
         state: present
         update_cache: yes
         cache_valid_time: 3600
@@ -125,17 +125,15 @@
         dest: /etc/RuuviDashboards
 
     - name: Direct 3000 port to 80
-      iptables:
-        table: nat
-        chain: PREROUTING
-        protocol: tcp
-        match: tcp
-        destination_port: 3000
-        jump: REDIRECT
-        to_ports: 80
-        comment: Redirect grafana traffic to port 80
+      iptables: table=nat chain=PREROUTING protocol=tcp match=tcp destination_port=3000 jump=REDIRECT to_ports=80
+      register: port_forward
+
+    - name: Save iptables
+      command: iptables-save
+      when: port_forward.changed
 
     - name: Import ruuvi dashboards to Grafana
+      ignore_errors: yes
       grafana_dashboard:
         grafana_url: http://localhost:3000
         state: present
