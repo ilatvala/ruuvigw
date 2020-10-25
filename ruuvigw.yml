@@ -130,7 +130,7 @@
       shell: "/sbin/iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 3000"
 
     - name: Save iptables
-      command: iptables-save
+      command: netfilter-persistent save
 
     - name: Replace DB name for template
       shell: "sed -i 's/${DS_RUUVI}/Ruuvi/g' '{{ item }}'"  
