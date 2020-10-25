@@ -1,7 +1,9 @@
 # ruuvigw
 Ruuvi gateway with InfluxDB and Grafana
+Tested to work at least with Raspberry Pi 4 and Banana Pi zero
 
 On Raspberry Pi, install https://www.raspberrypi.org/downloads/
+On Banana Pi zero, install https://www.armbian.com/bananapi-m2-zero/
 
 Then run:
 ```
@@ -15,3 +17,5 @@ Run playbook with:
 ```
 ansible-playbook -i "127.0.0.1," ruuvigw.yml
 ```
+Reboot to start using.
+Grafana should be available in port 80 with some default Ruuvi dashboards.
