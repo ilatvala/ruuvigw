@@ -127,15 +127,13 @@
         dest: /etc/RuuviDashboards
 
     - name: Direct 3000 port to 80
-      iptables: table=nat chain=PREROUTING protocol=tcp match=tcp destination_port=80 jump=REDIRECT to_ports=3000
-      register: port_forward
+      shell: "/sbin/iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 3000"
 
     - name: Save iptables
       command: iptables-save
-      when: port_forward.changed
 
     - name: Replace DB name for template
-      shell: "sed -i 's/DS_RUUVI/Ruuvi/g' '{{ item }}'"  
+      shell: "sed -i 's/\$\{DS_RUUVI\}/Ruuvi/g' '{{ item }}'"  
       ignore_errors: yes
       with_fileglob:
         - "/etc/RuuviDashboards/*.json"
