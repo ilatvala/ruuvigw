@@ -117,7 +117,7 @@
         dest: /etc/systemd/system/ruuvicollector.service
         content: "{{ ruuviservice }}"
 
-    - name: Enable and Start RuuviCollector
+    - name: Enable and Start RuuviCollector service
       # systemd module not working correctly with armbian ansible
       shell: "systemctl enable ruuvicollector.service --now"
 
@@ -135,7 +135,7 @@
       when: port_forward.changed
 
     - name: Replace DB name for template
-      shell: "sed -i 's/DS_RUUVI/ruuvi/g' {{ item }}"  
+      shell: "sed -i 's/DS_RUUVI/ruuvi/g' '{{ item }}'"  
       ignore_errors: yes
       with_fileglob:
         - "/etc/RuuviDashboards/*.json"
