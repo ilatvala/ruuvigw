@@ -1,9 +1,9 @@
 # ruuvigw
-Ruuvi gateway with InfluxDB and Grafana
-Tested to work at least with Raspberry Pi 4 and Banana Pi zero
+Ruuvi gateway with InfluxDB and Grafana  
+Tested to work at least with Raspberry Pi 4 and Banana Pi zero  
+Should work with other ARM v7 also.
 
-On Raspberry Pi, install https://www.raspberrypi.org/downloads/
-
+On Raspberry Pi, install https://www.raspberrypi.org/downloads/  
 On Banana Pi zero, install https://www.armbian.com/bananapi-m2-zero/
 
 Then run:
