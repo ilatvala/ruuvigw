@@ -121,7 +121,7 @@
       # systemd module not working correctly with armbian ansible
       shell: "systemctl enable ruuvicollector.service --now"
 
-    - name: Install RuuviCollector
+    - name: Fetch Ruuvi dashboards
       git:
         repo: https://github.com/ruuvi/ruuvi.grafana-dashboards.json.git
         dest: /etc/RuuviDashboards
