@@ -1,5 +1,5 @@
 # ruuvigw
-Ruuvi gateway with InfluxDB and Grafana  
+Ruuvi gateway with InfluxDB and Grafana. Works with https://ruuvi.com/ tags.  
 Tested to work at least with Raspberry Pi 4 and Banana Pi zero (installed as root)  
 Should work with other ARM v7 also.
 
