@@ -21,7 +21,7 @@ ansible-playbook -i "127.0.0.1," ruuvigw.yml
 ```
 If you get any errors, then just run the playbook again.  
 Reboot after installation.  
-Grafana should be available in port 80 with some default Ruuvi dashboards.
+Grafana should be available in port 80 (admin/admin) with some default Ruuvi dashboards.
 
 Here is the output from the playbook:  
 ```
