@@ -5,8 +5,8 @@
   become: yes
   become_user: root
   vars:
-    influxdb_version: influxdb_1.8.3_armhf.deb
-    grafana_version: grafana_7.2.2_armhf.deb
+    influxdb_version: influxdb_1.8.4_armhf.deb
+    grafana_version: grafana_7.5.4_armhf.deb
     database_name: ruuvi
     ruuvinames: |
       A67C075F95C6=Bedroom

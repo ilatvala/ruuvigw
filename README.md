@@ -33,8 +33,8 @@ TASK [apt install needed packages] *********************************************
 changed: [127.0.0.1]
 
 TASK [Install Influxdb and Grafana] ***********************************************
-changed: [127.0.0.1] => (item=https://dl.influxdata.com/influxdb/releases/influxdb_1.8.3_armhf.deb)
-changed: [127.0.0.1] => (item=https://dl.grafana.com/oss/release/grafana_7.2.2_armhf.deb)
+changed: [127.0.0.1] => (item=https://dl.influxdata.com/influxdb/releases/influxdb_1.8.4_armhf.deb)
+changed: [127.0.0.1] => (item=https://dl.grafana.com/oss/release/grafana_7.5.4_armhf.deb)
 
 TASK [Enable and Start Influxdb] **************************************************
 changed: [127.0.0.1]
@@ -103,3 +103,9 @@ changed: [127.0.0.1] => (item=/etc/RuuviDashboards/Ruuvi V2-1524070606424.json)
 PLAY RECAP ************************************************************************
 127.0.0.1                  : ok=20   changed=19   unreachable=0    failed=0
 ```
+
+Note about Bananapi m2 zero: Sometimes bluetooth did not start properly at boot, so I put a check to crontab to reboot if BT is not ok. Cron line is:
+```
+*/5 * * * * hciconfig -a | grep -q DOWN >/dev/null && if [ $? -eq 0 ]; then /usr/sbin/reboot ; fi
+```
+
