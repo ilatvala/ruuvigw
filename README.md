@@ -104,8 +104,9 @@ PLAY RECAP *********************************************************************
 127.0.0.1                  : ok=20   changed=19   unreachable=0    failed=0
 ```
 
-Note about Bananapi m2 zero: Sometimes bluetooth did not start properly at boot, so I put a check to crontab to reboot if BT is not ok. Cron line is:
+Note about Bananapi m2 zero: Sometimes bluetooth did not start properly at boot, so I put a check to crontab to reboot if BT is not ok. Also network connectivity problem would trigger a reboot. Cron line is:
 ```
-*/5 * * * * hciconfig -a | grep -q DOWN >/dev/null && if [ $? -eq 0 ]; then /usr/sbin/reboot ; fi
+*/5 * * * * hciconfig -a | grep -q DOWN >/dev/null && if [ $? -eq 0 ]; then /usr/sbin/shutdown -r +1 Bluetooh down, rebooting ; fi
+*/10 * * * * ping -c4 www.google.com >/dev/null && if [ $? -ne 0 ]; then /usr/sbin/shutdown -r +1 Connection lost, rebooting ; fi
 ```
 
