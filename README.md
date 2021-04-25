@@ -110,3 +110,15 @@ Note about Bananapi m2 zero: Sometimes bluetooth did not start properly at boot,
 */10 * * * * ping -c4 www.google.com >/dev/null && if [ $? -ne 0 ]; then /usr/sbin/shutdown -r +1 Connection lost, rebooting ; fi
 ```
 
+In grafana I sometimes need to disable alerting for a certain timeframe and I do that with an hourly script in cron
+```
+#!/bin/bash
+# Disable alerts fetween hours
+# usage: ./disable-alerts-between.sh 06 21
+TZ='Europe/Helsinki' date +%H | grep $1 && (
+  curl http://localhost:3000/api/admin/pause-all-alerts -d '{"paused":true}' -u admin:mypassword -H 'Content-Type: application/json'
+)
+TZ='Europe/Helsinki' date +%H | grep $2 && (
+  curl http://localhost:3000/api/admin/pause-all-alerts -d '{"paused":false}' -u admin:mypassword -H 'Content-Type: application/json'
+)
+```
