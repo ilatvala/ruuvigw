@@ -1,7 +1,8 @@
 # ruuvigw
 ![ruuvigw picture](https://user-images.githubusercontent.com/2929136/115986648-eab20480-a5b9-11eb-98be-b840e62dc9c1.png)
 Ruuvi gateway with InfluxDB and Grafana. Works with https://ruuvi.com/ tags.  
-Tested to work at least with Raspberry Pi 4 and BananaPi m2 zero (installed as root)
+Tested to work at least with Raspberry Pi 4 and BananaPi m2 zero (installed as root).
+
 BananaPi m2 zero had much better reception with the external antenna.
 Should work with other ARM v7 also.
 
