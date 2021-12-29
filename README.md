@@ -2,11 +2,9 @@
 ![ruuvigw picture](https://user-images.githubusercontent.com/2929136/115986648-eab20480-a5b9-11eb-98be-b840e62dc9c1.png)
 Ruuvi gateway with InfluxDB and Grafana. Works with https://ruuvi.com/ tags.  
 Tested to work at least with Raspberry Pi 4 and BananaPi m2 zero (installed as root).
+Tested also with Raspberry Pi Zero 2 W, and that worked ok.
 
-BananaPi m2 zero had much better reception with the external antenna.
-Should work with other ARM v7 also.
-
-On Raspberry Pi, install https://www.raspberrypi.org/downloads/  
+On Raspberry Pi, install https://www.raspberrypi.org/downloads/  (ctrl+shift+x for custom config, like wifi)
 On Banana Pi zero, install https://www.armbian.com/bananapi-m2-zero/  (used Armbian Buster)  
 
 Then run:
@@ -36,8 +34,8 @@ TASK [apt install needed packages] *********************************************
 changed: [127.0.0.1]
 
 TASK [Install Influxdb and Grafana] ***********************************************
-changed: [127.0.0.1] => (item=https://dl.influxdata.com/influxdb/releases/influxdb_1.8.4_armhf.deb)
-changed: [127.0.0.1] => (item=https://dl.grafana.com/oss/release/grafana_7.5.4_armhf.deb)
+changed: [127.0.0.1] => (item=https://dl.influxdata.com/influxdb/releases/influxdb_1.8.10_armhf.deb)
+changed: [127.0.0.1] => (item=https://dl.grafana.com/oss/release/grafana_8.3.3_armhf.deb)
 
 TASK [Enable and Start Influxdb] **************************************************
 changed: [127.0.0.1]

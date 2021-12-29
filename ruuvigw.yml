@@ -5,8 +5,8 @@
   become: yes
   become_user: root
   vars:
-    influxdb_version: influxdb_1.8.4_armhf.deb
-    grafana_version: grafana_7.5.4_armhf.deb
+    influxdb_version: influxdb_1.8.10_armhf.deb
+    grafana_version: grafana_8.3.3_armhf.deb
     database_name: ruuvi
     ruuvinames: |
       A67C075F95C6=Bedroom
@@ -35,7 +35,7 @@
           - bluetooth
           - bluez
           - bluez-hcidump
-          - python-pip
+          - python3-pip
           - python-setuptools
           - nftables
           - iptables-persistent
@@ -81,7 +81,7 @@
       grafana_datasource:
         name: Ruuvi
         ds_type: influxdb
-        url: http://localhost:8086
+        ds_url: http://localhost:8086
         grafana_url: http://localhost:3000
         database: "{{ database_name }}"
         is_default: yes
@@ -143,7 +143,7 @@
       grafana_dashboard:
         grafana_url: http://localhost:3000
         state: present
-        message: Ruuvi dashboards
+        commit_message: Ruuvi dashboards
         overwrite: yes
         path: "{{ item }}"
       with_fileglob:
