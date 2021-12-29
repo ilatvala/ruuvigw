@@ -17,6 +17,7 @@
       Description=RuuviCollector Service
       After=network.target
       [Service]
+      ExecStartPre=/usr/bin/sleep 30
       Type=simple
       User=root
       WorkingDirectory=/etc/RuuviCollector
