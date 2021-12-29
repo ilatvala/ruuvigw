@@ -5,6 +5,7 @@ Tested to work at least with Raspberry Pi 4 and BananaPi m2 zero (installed as r
 Tested also with Raspberry Pi Zero 2 W, and that worked ok.
 
 On Raspberry Pi, install https://www.raspberrypi.org/downloads/  (ctrl+shift+x for custom config, like wifi)
+
 On Banana Pi zero, install https://www.armbian.com/bananapi-m2-zero/  (used Armbian Buster)  
 
 Then run:
